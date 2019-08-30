@@ -90,7 +90,7 @@ class DoubleLinkedList {
     //第二种方式添加英雄时，根据排名将英雄插入到指定位置。如果有这个排名则添加失败并给出提示
     public void addByOrder(HeroNode2 heroNode) {
         //因为头结点不能动，因此我们任然通过一个辅助节点来帮助找到添加的位置
-        //因为双向链表，因此我们找的temp是位于添加位置的前一个节点，否则无法插入
+        //参考单向链表，我们找的temp是位于添加位置的前一个节点，否则无法插入
         HeroNode2 temp = head;
         boolean flag = false; //标识添加的编号是否存在，默认false
         while (true) {
