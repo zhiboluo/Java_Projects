@@ -1,16 +1,33 @@
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SelectSort {
     public static void main(String[] args) {
 
-        int[] arr = {101, 34, 119, 1, -1, 90, 123};
-        System.out.println("原始数组：");
-        System.out.println(Arrays.toString(arr));
+//        int[] arr = {101, 34, 119, 1, -1, 90, 123};
+        int[] arr = new int[80000];
+        for (int i = 0; i < 80000; i++) {
+            arr[i] = (int) (Math.random() * 800000);
+        }
+
+//        System.out.println("原始数组：");
+//        System.out.println(Arrays.toString(arr));
+
+        System.out.println("选择排序时间复杂度测试~");
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr = simpleDateFormat.format(date);
+        System.out.println("排序前的时间是：" + datestr);
 
         selectSort(arr);
 
-        System.out.println("选择排序后：");
-        System.out.println(Arrays.toString(arr));
+        Date date2 = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr2 = simpleDateFormat.format(date2);
+        System.out.println("排序后的时间是：" + datestr2);
+//        System.out.println("选择排序后：");
+//        System.out.println(Arrays.toString(arr));
 
     }
 
