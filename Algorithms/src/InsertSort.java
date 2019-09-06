@@ -78,9 +78,11 @@ public class InsertSort {
         System.out.println(Arrays.toString(arr)); */
 
         //使用for循环来简化代码
+        int insetVal = 0;
+        int insetIndex = 0;
         for (int i = 1; i < arr.length; i++) {
-            int insetVal = arr[i];
-            int insetIndex = i - 1; //即arr[1]前面这个数的下标
+            insetVal = arr[i];
+            insetIndex = i - 1; //即arr[1]前面这个数的下标
 
             //给insertVal找到插入的位置
             //1. insertIndex > 0保证在给insertVal找插入位置时，不越界
