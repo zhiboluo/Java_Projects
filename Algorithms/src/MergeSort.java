@@ -1,13 +1,32 @@
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MergeSort {
     public static void main(String[] args) {
-        int[] arr = {8, 4, 5, 7, 1, 3, 6, 2};
+//        int[] arr = {8, 4, 5, 7, 1, 3, 6, 2};
+
+        int[] arr = new int[8000000];
+        for (int i = 0; i < 8000000; i++) {
+            arr[i] = (int) (Math.random() * 800000);
+        }
+
+        System.out.println("归并排序时间复杂度测试~");
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr = simpleDateFormat.format(date);
+        System.out.println("排序前的时间是：" + datestr);
+
         int[] temp = new int[arr.length]; //归并排序需要一个额外的空间
 
         mergeSort(arr, 0, arr.length - 1, temp);
 
-        System.out.println("归并排序后，arr = " + Arrays.toString(arr));
+//        System.out.println("归并排序后，arr = " + Arrays.toString(arr));
+
+        Date date2 = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr2 = simpleDateFormat.format(date2);
+        System.out.println("排序后的时间是：" + datestr2);
 
     }
 
@@ -27,7 +46,7 @@ public class MergeSort {
     }
 
 
-    //合并的方法
+    //合并的方法  合并的次数是 arr.length-1 次
 
     /**
      * @param arr   排序的原始数组
