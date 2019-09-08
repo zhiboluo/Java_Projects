@@ -1,10 +1,29 @@
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = {-9, 78, 0, 23, -567, 70, -1, 900, 4561};
+//        int[] arr = {-9, 78, 0, 23, -567, 70, -1, 900, 4561};
+
+        int[] arr = new int[800000];
+        for (int i = 0; i < 800000; i++) {
+            arr[i] = (int) (Math.random() * 800000);
+        }
+
+        System.out.println("快速排序时间复杂度测试~");
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr = simpleDateFormat.format(date);
+        System.out.println("排序前的时间是：" + datestr);
+
         quickSort(arr, 0, arr.length - 1);
-        System.out.println("arr = " + Arrays.toString(arr));
+//        System.out.println("arr = " + Arrays.toString(arr));
+
+        Date date2 = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr2 = simpleDateFormat.format(date2);
+        System.out.println("排序后的时间是：" + datestr2);
     }
 
     //
