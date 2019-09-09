@@ -1,10 +1,33 @@
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class RadixSort {
     public static void main(String[] args) {
-        int[] arr = {53, 3, 542, 748, 14, 214};
+//        int[] arr = {53, 3, 542, 748, 14, 214};
+
+        //需要的内存空间为：80000000*11*4/1024/1024/1024 = 3.3 G
+        int[] arr = new int[80000000];
+        for (int i = 0; i < 80000000; i++) {
+            arr[i] = (int) (Math.random() * 800000);
+        }
+
+        System.out.println("基数排序时间复杂度测试~");
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr = simpleDateFormat.format(date);
+        System.out.println("排序前的时间是：" + datestr);
+
 //        radixSortTest(arr);
         radixSort(arr);
+
+//        System.out.println("基数排序后 arr = " + Arrays.toString(arr));
+
+        Date date2 = new Date();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr2 = simpleDateFormat.format(date2);
+        System.out.println("排序后的时间是：" + datestr2);
     }
 
     //基数排序方法思路测试
@@ -153,7 +176,7 @@ public class RadixSort {
                 }
             }
 
-            System.out.println("第" + (i + 1) + "轮，对应的排序处理 arr = " + Arrays.toString(arr));
+//            System.out.println("第" + (i + 1) + "轮，对应的排序处理 arr = " + Arrays.toString(arr));
 
         }
     }
