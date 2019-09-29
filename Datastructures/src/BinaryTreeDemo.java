@@ -18,7 +18,7 @@ public class BinaryTreeDemo {
         binaryTree.setRoot(root);
         //测试
         System.out.println("前序遍历");
-        binaryTree.preOrder();
+        binaryTree.preOrder(); //1,2,3,5,4
 
         System.out.println("中序遍历");
         binaryTree.infixOrder();
@@ -55,6 +55,15 @@ public class BinaryTreeDemo {
         } else {
             System.out.printf("没有找到 no = %d 的英雄 \n", 5);
         }
+
+        //删除节点
+        System.out.println("删除测试~~~");
+        System.out.println("删除前，前序遍历");
+        binaryTree.preOrder();//1,2,3,5,4
+//        binaryTree.delNode(5);
+        binaryTree.delNode(3);
+        System.out.println("删除后，前序遍历");
+        binaryTree.preOrder();//1,2,3,4
 
     }
 }
@@ -222,6 +231,39 @@ class HeroNode {
         return resNode;
     }
 
+    //完成删除节点的操作
+    //规定：1. 如果删除的节点是叶子结点，则直接删除
+    //      2. 如果删除的节点非叶子节点，则删除该子树
+    /*思路
+        1. 因为我们的二叉树是单向的，因此，我们是判断当前节点的子节点是否需要删除，而不是去判断当前这个节点是不是需要删除
+        2. 如果当前节点的左子节点不为空，并且左子节点就是要删除的节点，就将this.left = null;并且返回
+        3. 如果当前节点的右子节点不为空，并且右子节点就是要删除的节点，就将this.right = null;并且返回
+        4. 如果第2，3步都没有删除，那么就需要向左子树进行递归删除
+        5. 如果左递归仍未删除成功，则继续向右子树进行递归删除
+        6. 如果数是空树root，则等价将二叉树置空 (在BinaryTree 里面判断)
+     */
+
+    //递归删除节点
+    public void delNode(int no) {
+        //2. 如果当前节点的左子节点不为空，并且左子节点就是要删除的节点，就将this.left = null;并且返回
+        if (this.left != null && this.left.no == no) {
+            this.left = null;
+            return;
+        }
+        //3. 如果当前节点的右子节点不为空，并且右子节点就是要删除的节点，就将this.right = null;并且返回
+        if (this.right != null && this.right.no == no) {
+            this.right = null;
+            return;
+        }
+        //4. 如果第2，3步都没有删除，那么就需要向左子树进行递归删除
+        if (this.left != null) {
+            this.left.delNode(no);
+        }
+        //5. 如果左递归仍未删除成功，则继续向右子树进行递归删除
+        if (this.right != null) {
+            this.right.delNode(no);
+        }
+    }
 }
 
 //定义一个Binary Tree 二叉树
@@ -283,6 +325,20 @@ class BinaryTree {
             return root.postOrderSearch(no);
         } else {
             return null;
+        }
+    }
+
+    //删除节点
+    public void delNode(int no) {
+        if (root != null) {
+            //如果只有一个root节点，这里需要立即判断root是不是要删除的节点
+            if (root.getNo() == no) {
+                root = null;
+            } else {
+                root.delNode(no);
+            }
+        } else {
+            System.out.println("空树！无法删除~~~");
         }
     }
 }
